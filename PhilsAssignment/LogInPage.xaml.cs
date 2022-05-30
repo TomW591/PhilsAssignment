@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
 namespace PhilsAssignment
 {
     /// <summary>
@@ -32,6 +32,7 @@ namespace PhilsAssignment
         {
            username = _userNameInput.Text;
             password = _passwordBox.Password;
+            verify(username, password);
         }
 
 
@@ -44,6 +45,15 @@ namespace PhilsAssignment
         private void _passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public bool verify(string username, string password)
+        {
+            string test;
+            StreamReader reader = new StreamReader("users.csv");
+            test = reader.ReadToEnd();
+            
+            return true;
         }
     }
 }
