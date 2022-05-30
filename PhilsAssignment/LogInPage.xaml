@@ -1,0 +1,54 @@
+﻿<Page x:Class="PhilsAssignment.LogInPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PhilsAssignment"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LogInPage">
+
+    <Grid Margin="0,-2,0,2">
+        <!--<Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+       
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="2*" ></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+            <RowDefinition Height="auto" ></RowDefinition>
+        </Grid.RowDefinitions>-->
+
+        <materialDesign:Card Height="50" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"
+  Background="{DynamicResource PrimaryHueDarkBrush}"
+  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+  Padding="8"
+  UniformCornerRadius="6" Grid.ColumnSpan="2" Margin="16,0,34,0">
+            <TextBlock
+    TextWrapping="Wrap"
+    Text="Log In Page" />
+        </materialDesign:Card>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
+            <TextBox x:Name="_userNameInput" TextChanged="_userNameInput_TextChanged"
+             Style="{StaticResource MaterialDesignFilledTextBox}"
+             VerticalAlignment="Top"
+             AcceptsReturn="True"
+             TextWrapping="Wrap"
+             MaxWidth="400"
+             materialDesign:HintAssist.Hint="Enter UserName">    
+            
+            </TextBox>
+            <PasswordBox x:Name="_passwordBox" PasswordChanged="_passwordBox_PasswordChanged"  Height="50" Width="200" VerticalAlignment="Bottom"
+  Style="{StaticResource MaterialDesignFilledPasswordBox}"
+  materialDesign:HintAssist.Hint="Password"/>
+            <Button x:Name="_logInButton" Click="_logInButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+        Width="75"
+        Content="Enter"
+        ></Button>
+        </StackPanel>
+    </Grid>
+</Page>

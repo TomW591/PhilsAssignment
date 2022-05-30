@@ -20,9 +20,11 @@ namespace PhilsAssignment
     /// </summary>
     public partial class MainWindow : Window
     {
+        LogInPage start = new LogInPage();
         public MainWindow()
         {
             InitializeComponent();
+            Content = start;
         }
     }
 }
