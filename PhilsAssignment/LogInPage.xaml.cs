@@ -49,9 +49,25 @@ namespace PhilsAssignment
 
         public bool verify(string username, string password)
         {
-            string test;
-            StreamReader reader = new StreamReader("users.csv");
-            test = reader.ReadToEnd();
+            string[,] info = new string[25,5];
+            csvSplit split = new csvSplit();
+            info = split.split();
+            if(username == null || password == null)
+            {
+                return false;
+            }
+            for(int i = 0; i < info.GetLength(0); i++)
+            {
+                if (info[i,0] == username)
+                {
+                    if (info[i, 1] == password)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+                
+            }
             
             return true;
         }
