@@ -28,6 +28,7 @@ namespace PhilsAssignment
                 
                 
             }
+          reader.Close();
           return info;
 
 
