@@ -21,16 +21,15 @@ namespace PhilsAssignment
     /// </summary>
     public partial class AdminPage : Page
     {
-        private string username = "ben.falkingham";
-        private string password = "BFalkPass1";
-        private string newPassword = "BFalkNewPass1";
-        private string firstname = "ben";
-        private string lastname = "falkingham";
+        private string username;
+        private string password;
+        private string newPassword;
+        private string firstname;
+        private string lastname;
         private string[,] data;
         public AdminPage()
         {
             InitializeComponent();
-            ChangePassword();
         }
 
         public string[,] GetData()

@@ -4,11 +4,68 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PhilsAssignment"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminPage">
 
-    <Grid>
+    <Grid Margin="0,-2,0,2">
+        <materialDesign:Card Height="50" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Background="{DynamicResource PrimaryHueDarkBrush}"
+            Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+            Padding="8"
+            UniformCornerRadius="6" Grid.ColumnSpan="2" Margin="16,0,34,0">
+            <TextBlock TextWrapping="Wrap" Text="Administration Page" />
+        </materialDesign:Card>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100,0,0">
+            <Button x:Name="_changePasswordButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+                    Width="150" 
+                    Margin="0,0,100,0"
+                    Content="Change Password"
+            ></Button>
+            <Button x:Name="_createAccountButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+                    Width="150" 
+                    Margin="0,0,100,0"
+                    Content="Create Account"
+            ></Button>
+            <Button x:Name="_deleteAccountButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+                    Width="150" 
+                    Content="Delete Account"
+            ></Button>
+        </StackPanel>
+        
+        <!--Change Password Entry Boxes-->
+        <StackPanel x:Name="ChangePasswordStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
+             Visibility="Visible" Margin="0,150,0,0">
+            <TextBox x:Name="_cPUserNameInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter UserName">
+            </TextBox>
+            <PasswordBox x:Name="_cPOldPasswordInput" 
+                Style="{StaticResource MaterialDesignFilledPasswordBox}"
+                VerticalAlignment="Top"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter Old Password">
+            </PasswordBox>
+            <TextBox x:Name="_cPNewPasswordInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter New Password">
+            </TextBox>
+            <Button x:Name="_cPButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="75"
+                Content="Enter">
+            </Button>
+        </StackPanel>
+        
+        <!--Create Account Entry Boxes-->
         
     </Grid>
 </Page>

@@ -25,7 +25,6 @@ namespace PhilsAssignment
         public LogInPage()
         {
             InitializeComponent();
-        
         }
 
         private void _logInButton_Click(object sender, RoutedEventArgs e)
