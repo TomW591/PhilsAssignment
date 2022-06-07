@@ -25,6 +25,7 @@ namespace PhilsAssignment
         {
             InitializeComponent();
             Content = start;
+
         }
     }
 }
