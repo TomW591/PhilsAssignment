@@ -18,17 +18,17 @@
             <TextBlock TextWrapping="Wrap" Text="Administration Page" />
         </materialDesign:Card>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,100,0,0">
-            <Button x:Name="_changePasswordButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+            <Button x:Name="_changePasswordButton" Click="_changePasswordButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150" 
                     Margin="0,0,100,0"
                     Content="Change Password"
             ></Button>
-            <Button x:Name="_createAccountButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+            <Button x:Name="_createAccountButton" Click="_createAccountButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150" 
                     Margin="0,0,100,0"
                     Content="Create Account"
             ></Button>
-            <Button x:Name="_deleteAccountButton" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
+            <Button x:Name="_deleteAccountButton" Click="_deleteAccountButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150" 
                     Content="Delete Account"
             ></Button>
@@ -51,15 +51,13 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Old Password">
             </PasswordBox>
-            <TextBox x:Name="_cPNewPasswordInput" 
-                Style="{StaticResource MaterialDesignFilledTextBox}"
+            <PasswordBox x:Name="_cPNewPasswordInput" 
+                Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter New Password">
-            </TextBox>
-            <Button x:Name="_cPButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            </PasswordBox>
+            <Button x:Name="_cPButton" Click="_cPButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
                 Content="Enter">
             </Button>
@@ -84,15 +82,13 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Lastname">
             </TextBox>
-            <TextBox x:Name="_cAPasswordInput" 
-                Style="{StaticResource MaterialDesignFilledTextBox}"
+            <PasswordBox x:Name="_cAPasswordInput" 
+                Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Password">
-            </TextBox>
-            <Button x:Name="_cAButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            </PasswordBox>
+            <Button x:Name="_cAButton" Click="_cAButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
                 Content="Enter">
             </Button>
@@ -100,7 +96,7 @@
         
         <!--Delete Account Stack Panel-->
         <StackPanel x:Name="DeleteAccountStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
-             Visibility="Visible" Margin="0,150,0,0">
+             Visibility="Hidden" Margin="0,150,0,0">
             <TextBox x:Name="_dAUserNameInput" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -109,11 +105,14 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter UserName">
             </TextBox>
-            <Button x:Name="_dAButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            <Button x:Name="_dAButton" Click="_dAButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
                 Content="Enter">
             </Button>
         </StackPanel>
-
+        <TextBlock x:Name="ErrorMessage" HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                   Style="{StaticResource MaterialDesignBody1TextBlock}"
+                   Text="">
+        </TextBlock>
     </Grid>
 </Page>
