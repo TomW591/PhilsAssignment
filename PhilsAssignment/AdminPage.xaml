@@ -36,7 +36,7 @@
         
         <!--Change Password Entry Boxes-->
         <StackPanel x:Name="ChangePasswordStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
-             Visibility="Visible" Margin="0,150,0,0">
+             Visibility="Hidden" Margin="0,150,0,0">
             <TextBox x:Name="_cPUserNameInput" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -66,6 +66,54 @@
         </StackPanel>
         
         <!--Create Account Entry Boxes-->
+        <StackPanel x:Name="CreateAccountStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
+             Visibility="Hidden" Margin="0,150,0,0">
+            <TextBox x:Name="_cAFirstnameInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter Firstname">
+            </TextBox>
+            <TextBox x:Name="_cALastnameInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter Lastname">
+            </TextBox>
+            <TextBox x:Name="_cAPasswordInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter Password">
+            </TextBox>
+            <Button x:Name="_cAButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="75"
+                Content="Enter">
+            </Button>
+        </StackPanel>
         
+        <!--Delete Account Stack Panel-->
+        <StackPanel x:Name="DeleteAccountStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
+             Visibility="Visible" Margin="0,150,0,0">
+            <TextBox x:Name="_dAUserNameInput" 
+                Style="{StaticResource MaterialDesignFilledTextBox}"
+                VerticalAlignment="Top"
+                AcceptsReturn="True"
+                TextWrapping="Wrap"
+                MaxWidth="400"
+                materialDesign:HintAssist.Hint="Enter UserName">
+            </TextBox>
+            <Button x:Name="_dAButton" Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Width="75"
+                Content="Enter">
+            </Button>
+        </StackPanel>
+
     </Grid>
 </Page>
