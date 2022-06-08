@@ -10,7 +10,7 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="{DynamicResource MaterialDesignDarkBackground}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
