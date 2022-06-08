@@ -22,6 +22,7 @@ namespace PhilsAssignment
     public partial class AdminPage : Page
     {
         private string username;
+        private string currentUsername;
         private string password;
         private string newPassword;
         private string firstname;
@@ -30,8 +31,9 @@ namespace PhilsAssignment
         public AdminPage()
         {
             InitializeComponent();
+            Disabler();
         }
-
+   
         public string[,] GetData()
         {
             string[,] info = new string[25, 5];
@@ -135,11 +137,11 @@ namespace PhilsAssignment
             data = GetData();
             for (int i = 0; i < data.GetLength(0); i++)
             {
-                if (data[i, 0] == username)
+                if (data[i, 0] == currentUsername)
                 {
                     if (data[i, 1] == password)
                     {
-                        if (ValidatePassword(newPassword)) 
+                        if (ValidatePassword(newPassword))
                         { 
                             data[i, 1] = newPassword;
                             ErrorMessage.Text = "Password changed successfully.";
@@ -147,7 +149,11 @@ namespace PhilsAssignment
                             SetData(data);
                         }
                     }
-                    
+                    else
+                    {
+                        ErrorMessage.Text = "Error - Invalid Old Password.";
+                        ErrorMessage.Foreground = Brushes.Red;
+                    }
                 }
 
             }
@@ -204,6 +210,27 @@ namespace PhilsAssignment
             }
         }
 
+        public void Disabler()
+        {
+            data = GetData();
+            for (int i = 0; i < data.GetLength(0); i++)
+            {
+                if (data[i, 0] == username)
+                {
+                    if(data[i, 2] == "Dev")
+                    {
+                        _createAccountButton.IsEnabled = false;
+                        _deleteAccountButton.IsEnabled = false;
+                    }
+                    else
+                    {
+                        _createAccountButton.IsEnabled = true;
+                        _deleteAccountButton.IsEnabled = true;
+                    }
+                }
+            }
+        }
+
         private void _changePasswordButton_Click(object sender, RoutedEventArgs e)
         {
             ChangePasswordStackPanel.Visibility = Visibility.Visible;
@@ -230,7 +257,6 @@ namespace PhilsAssignment
 
         private void _cPButton_Click(object sender, RoutedEventArgs e)
         {
-            username = _cPUserNameInput.Text;
             password = _cPOldPasswordInput.Password;
             newPassword = _cPNewPasswordInput.Password;
             ChangePassword();

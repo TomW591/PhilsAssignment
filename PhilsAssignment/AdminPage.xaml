@@ -37,14 +37,6 @@
         <!--Change Password Entry Boxes-->
         <StackPanel x:Name="ChangePasswordStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
              Visibility="Hidden" Margin="0,150,0,0">
-            <TextBox x:Name="_cPUserNameInput" 
-                Style="{StaticResource MaterialDesignFilledTextBox}"
-                VerticalAlignment="Top"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                MaxWidth="400"
-                materialDesign:HintAssist.Hint="Enter UserName">
-            </TextBox>
             <PasswordBox x:Name="_cPOldPasswordInput" 
                 Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
