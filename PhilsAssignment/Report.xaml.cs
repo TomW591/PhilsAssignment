@@ -16,17 +16,14 @@ using System.Windows.Shapes;
 namespace PhilsAssignment
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Report.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Report : Page
     {
-        LogInPage start = new LogInPage();
-        Report report = new Report();
-        public MainWindow()
+        public Report()
         {
             InitializeComponent();
-            Content = report;
-
         }
+
     }
 }
