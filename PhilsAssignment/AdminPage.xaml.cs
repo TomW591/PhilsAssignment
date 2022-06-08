@@ -22,6 +22,7 @@ namespace PhilsAssignment
     public partial class AdminPage : Page
     {
         private string username;
+        private string currentUsername;
         private string password;
         private string newPassword;
         private string firstname;
@@ -30,8 +31,9 @@ namespace PhilsAssignment
         public AdminPage()
         {
             InitializeComponent();
+            Disabler();
         }
-
+   
         public string[,] GetData()
         {
             string[,] info = new string[25, 5];
@@ -63,12 +65,15 @@ namespace PhilsAssignment
                 if (data[i, 0] == username)
                 {
                     data[i, 0] = ""; data[i, 1] = ""; data[i, 2] = ""; data[i, 3] = ""; data[i, 4] = "";
+                    ErrorMessage.Text = "Account deleted successfully.";
+                    ErrorMessage.Foreground = Brushes.Green;
                     SetData(data);
                     exist = true;
                 }
                 if (!exist)
                 {
-                    Console.Write("Username does not exist");
+                    ErrorMessage.Text = "Error - Username does not exist.";
+                    ErrorMessage.Foreground = Brushes.Red;
                 }
             }
         }
@@ -78,8 +83,17 @@ namespace PhilsAssignment
             bool validLength = false; bool validChars = true; bool validName = false;
             if(name.Length > 0 && name.Length <= 64) { validLength = true; }
             foreach(char letter in name) { validChars = validChars && (Char.IsUpper(letter) || Char.IsLower(letter)); }
-            if (!validLength) { Console.Write("Error - names must be between 1 and 64 chars"); }
-            else if (!validChars) { Console.Write("Error - names must only contain alphabetic chars"); }
+            if (!validLength) 
+            { 
+                ErrorMessage.Text = "Error - Names must be between 1 and 64 characters in length. ";
+                ErrorMessage.Foreground = Brushes.Red;
+
+            }
+            else if (!validChars) 
+            {
+                ErrorMessage.Text = "Error - Names must only contain alphabetic characters.";
+                ErrorMessage.Foreground = Brushes.Red;
+            }
             else { validName = true; }
             return validName;
         }
@@ -94,10 +108,26 @@ namespace PhilsAssignment
                 validLower = validLower || Char.IsLower(letter);
                 validDigit = validDigit || Char.IsDigit(letter);
             }
-            if (!validLength) { Console.Write("Error - Password must be between 8 and 64 chars"); }
-            else if (!validUpper) { Console.Write("Error - Password must contain an upper char"); }
-            else if (!validLower) { Console.Write("Error - Password must contain a lower char"); }
-            else if (!validDigit) { Console.Write("Error - Password must contain a number"); }
+            if (!validLength) 
+            { 
+                ErrorMessage.Text = "Error - Passwords must be between 8 and 64 characters in length.";
+                ErrorMessage.Foreground = Brushes.Red;
+            }
+            else if (!validUpper) 
+            { 
+                ErrorMessage.Text = "Error - Passwords must contain a uppercase character.";
+                ErrorMessage.Foreground = Brushes.Red;
+            }
+            else if (!validLower) 
+            { 
+                ErrorMessage.Text = "Error - Passwords must contain a lowercase character.";
+                ErrorMessage.Foreground = Brushes.Red;
+            }
+            else if (!validDigit) 
+            {
+                ErrorMessage.Text = "Error - Passwords must contain a number.";
+                ErrorMessage.Foreground = Brushes.Red;
+            }
             else { validPassword = true; }
             return validPassword;
         }
@@ -107,17 +137,23 @@ namespace PhilsAssignment
             data = GetData();
             for (int i = 0; i < data.GetLength(0); i++)
             {
-                if (data[i, 0] == username)
+                if (data[i, 0] == currentUsername)
                 {
                     if (data[i, 1] == password)
                     {
-                        if (ValidatePassword(newPassword)) 
+                        if (ValidatePassword(newPassword))
                         { 
                             data[i, 1] = newPassword;
+                            ErrorMessage.Text = "Password changed successfully.";
+                            ErrorMessage.Foreground = Brushes.Green;
                             SetData(data);
                         }
                     }
-                    
+                    else
+                    {
+                        ErrorMessage.Text = "Error - Invalid Old Password.";
+                        ErrorMessage.Foreground = Brushes.Red;
+                    }
                 }
 
             }
@@ -167,10 +203,77 @@ namespace PhilsAssignment
                     }
                 }
 
+                ErrorMessage.Text = "Account created successfully.";
+                ErrorMessage.Foreground = Brushes.Green;
                 SetData(data);
 
             }
         }
 
+        public void Disabler()
+        {
+            data = GetData();
+            for (int i = 0; i < data.GetLength(0); i++)
+            {
+                if (data[i, 0] == username)
+                {
+                    if(data[i, 2] == "Dev")
+                    {
+                        _createAccountButton.IsEnabled = false;
+                        _deleteAccountButton.IsEnabled = false;
+                    }
+                    else
+                    {
+                        _createAccountButton.IsEnabled = true;
+                        _deleteAccountButton.IsEnabled = true;
+                    }
+                }
+            }
+        }
+
+        private void _changePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordStackPanel.Visibility = Visibility.Visible;
+            CreateAccountStackPanel.Visibility = Visibility.Hidden;
+            DeleteAccountStackPanel.Visibility = Visibility.Hidden;
+            ErrorMessage.Text = "";
+        }
+
+        private void _createAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordStackPanel.Visibility = Visibility.Hidden;
+            CreateAccountStackPanel.Visibility = Visibility.Visible;
+            DeleteAccountStackPanel.Visibility = Visibility.Hidden;
+            ErrorMessage.Text = "";
+        }
+
+        private void _deleteAccountButton_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePasswordStackPanel.Visibility = Visibility.Hidden;
+            CreateAccountStackPanel.Visibility = Visibility.Hidden;
+            DeleteAccountStackPanel.Visibility = Visibility.Visible;
+            ErrorMessage.Text = "";
+        }
+
+        private void _cPButton_Click(object sender, RoutedEventArgs e)
+        {
+            password = _cPOldPasswordInput.Password;
+            newPassword = _cPNewPasswordInput.Password;
+            ChangePassword();
+        }
+
+        private void _cAButton_Click(object sender, RoutedEventArgs e)
+        {
+            firstname = _cAFirstnameInput.Text;
+            lastname = _cALastnameInput.Text;
+            password = _cAPasswordInput.Password;
+            CreateAccount();
+        }
+
+        private void _dAButton_Click(object sender, RoutedEventArgs e)
+        {
+            username = _dAUserNameInput.Text;
+            DeleteAccount();
+        }
     }
 }
