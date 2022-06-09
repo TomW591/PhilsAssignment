@@ -21,7 +21,7 @@ namespace PhilsAssignment
     /// </summary>
     public partial class AdminPage : Page
     {
-        private string username;
+        private string username = "ben.falkingham";
         private string currentUsername;
         private string password;
         private string newPassword;
@@ -274,6 +274,21 @@ namespace PhilsAssignment
         {
             username = _dAUserNameInput.Text;
             DeleteAccount();
+        }
+
+        private void _adminPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void _projectPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void _reportPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

@@ -21,11 +21,12 @@ namespace PhilsAssignment
     public partial class MainWindow : Window
     {
         LogInPage start = new LogInPage();
+        AdminPage admin = new AdminPage();
         Report report = new Report();
         public MainWindow()
         {
             InitializeComponent();
-            Content = report;
+            Content = admin;
 
         }
     }
