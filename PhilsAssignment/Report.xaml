@@ -19,18 +19,11 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         
-            <ComboBox Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32"
-  materialDesign:HintAssist.Hint="Search"
+            <ComboBox  x:Name="searchBox" SelectionChanged="searchBox_SelectionChanged" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32"
+  materialDesign:HintAssist.Hint="Search" 
   materialDesign:HintAssist.HintOpacity=".26"
   IsEditable="True">
-                <ComboBoxItem
-    Content="Apple" />
-                <ComboBoxItem
-    Content="Banana" />
-                <ComboBoxItem
-    Content="Pear" />
-                <ComboBoxItem
-    Content="Orange" />
+               
             </ComboBox>
         <GroupBox Grid.Row="1"
   Header="Current Project"
@@ -50,7 +43,10 @@
                 <TextBlock Grid.Column="1" Text="Hours Used" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Column="2" Text="Tasks Completed" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
                 <TextBlock Grid.Column="3" Text="Tasks Remaining" Foreground="White" FontSize="24" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="0" x:Name="_ho" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" x:Name="_hoursAllocated" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" x:Name="_hoursUsed" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" x:Name="_tasksCompleted" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="0" x:Name="_tasksRemaining" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
  
   ToolTip="Resource name: MaterialDesignPaperDarkButton"
