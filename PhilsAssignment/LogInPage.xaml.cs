@@ -18,13 +18,16 @@ namespace PhilsAssignment
     /// <summary>
     /// Interaction logic for LogInPage.xaml
     /// </summary>
+  
     public partial class LogInPage : Page
     {
         private string password;
        private string username;
+       public currentUser user = new currentUser();
         public LogInPage()
         {
             InitializeComponent();
+            
         }
 
         private void _logInButton_Click(object sender, RoutedEventArgs e)
@@ -32,9 +35,14 @@ namespace PhilsAssignment
            username = _userNameInput.Text;
             password = _passwordBox.Password;
             verify(username, password);
+            setVals();
+            
         }
 
-
+        public (string,string) setVals()
+        {
+            return (user.UserName, user.Privellage);
+        }
 
         private void _userNameInput_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -61,6 +69,8 @@ namespace PhilsAssignment
                 {
                     if (info[i, 1] == password)
                     {
+                        user.UserName = username;
+                        user.Privellage = info[i, 2];
                         return true;
                     }
                     return false;
