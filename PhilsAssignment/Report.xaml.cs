@@ -21,18 +21,23 @@ namespace PhilsAssignment
     public partial class Report : Page
     {
         csvSplit data = new csvSplit();
-       currentUser user = new currentUser();
-        LogInPage logInPage = new LogInPage();
+        currentUser user = new currentUser();
+        public string selectedProject;
+        public string[] userInfo = new string[5];
         public Report()
         {
             InitializeComponent();
-            stufffff();
+           
+            //stufffff();
         }
+
+       
+
         public void stufffff()
         {
-            (user.UserName, user.Privellage) = logInPage.setVals(); // fuck knows if this will work but i have hope
+           
             string[,] temp = new string[25, 5];
-            string[] userInfo = new string[5];
+            
             temp = data.split();
             for(int i = 0; i < temp.GetLength(0); i++)
             {
@@ -58,10 +63,43 @@ namespace PhilsAssignment
             {
                 searchBox.Items.Add(currentProjects[i]);
             }
-
+ 
         }
 
         private void searchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedProject = (string)searchBox.SelectedItem;
+            LoadStats();
+        }
+
+        private void LoadStats()
+        {
+            string[] currentProjects = new string[10];
+            string[] hoursBooked = new string[10];
+            string split = userInfo[3];
+            currentProjects = split.Split(';');
+            split = userInfo[4];
+            hoursBooked = split.Split(';');
+            int count = 0;
+          
+            foreach(string element in currentProjects)
+            {
+                if (element == selectedProject)
+                {
+                    _hoursUsed.Text =  hoursBooked[count];
+                }
+                count++;
+            }
+           
+        }
+
+        private void _bookingButton_Click(object sender, RoutedEventArgs e)
+        {
+            BookingPage load = new BookingPage();
+            Content = load;
+        }
+
+        private void _userNameInput_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }

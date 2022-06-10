@@ -18,7 +18,16 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
-        
+      
+                    <TextBox x:Name="_userNameInput" TextChanged="_userNameInput_TextChanged" VerticalAlignment="Top" HorizontalAlignment="Right"
+             Style="{StaticResource MaterialDesignFilledTextBox}"
+            Margin="32"
+             AcceptsReturn="True"
+             TextWrapping="Wrap"
+             MaxWidth="200"
+             materialDesign:HintAssist.Hint="Enter UserName">
+
+                    </TextBox>
             <ComboBox  x:Name="searchBox" SelectionChanged="searchBox_SelectionChanged" Width="150" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32"
   materialDesign:HintAssist.Hint="Search" 
   materialDesign:HintAssist.HintOpacity=".26"
@@ -47,7 +56,7 @@
                 <TextBlock Grid.Column="0" x:Name="_hoursUsed" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="0" x:Name="_tasksCompleted" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Grid.Column="0" x:Name="_tasksRemaining" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Button Style="{StaticResource MaterialDesignFlatDarkButton}"
+                <Button x:Name="_bookingButton" Click="_bookingButton_Click" Style="{StaticResource MaterialDesignFlatDarkButton}"
  
   ToolTip="Resource name: MaterialDesignPaperDarkButton"
   Content="Book Hours To Project" Grid.Column="1" Grid.ColumnSpan="2" Margin="92,148,94,36"/>

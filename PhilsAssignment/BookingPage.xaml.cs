@@ -16,23 +16,24 @@ using System.Windows.Shapes;
 namespace PhilsAssignment
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for BookingPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class BookingPage : Page
     {
-        
- 
-        public MainWindow()
+        public BookingPage()
         {
             InitializeComponent();
-            Report load = new Report();
-            Content = load;
-
         }
 
-       public void setContent(Page page)
+        private void PackIcon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Content = page;
-         }
+            Report load = new Report();
+            Content = load;
+        }
+
+        private void searchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
