@@ -27,8 +27,8 @@ namespace PhilsAssignment
 
         private void PackIcon_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            Report load = new Report();
-            Content = load;
+            ReportWin load = new ReportWin();
+            load.Show();
         }
 
         private void searchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -30,6 +30,7 @@ namespace PhilsAssignment
 
         }
 
+        //This method writes the username entered to "currentUser.txt" after a successful login.
         public void SetCurrentUser()
         {
             StreamWriter writer = new StreamWriter("currentUser.txt");
@@ -37,16 +38,25 @@ namespace PhilsAssignment
             writer.Close();
         }
 
+        //This method stores the username and password entered and attempts to log the user in after pressing the Enter Button.
         private void _logInButton_Click(object sender, RoutedEventArgs e)
         {
             username = _userNameInput.Text;
             password = _passwordBox.Password;
+            //Verifies if the username and password are correct.
             if (verify(username, password))
             {
+                //If correct, the current user is written to the file and the admin page is opened.
                 SetCurrentUser();
                 AdminWin admin = new AdminWin();
                 admin.Show();
                 Close();
+            }
+            //Otherwise, Error message is displayed.
+            else
+            {
+                _errorMessage.Text = "Error - Invalid username or password";
+                _errorMessage.Foreground = Brushes.Red;
             }
 
         }
@@ -56,31 +66,25 @@ namespace PhilsAssignment
             return (user.UserName, user.Privellage);
         }
 
-        private void _userNameInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-        private void _passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        //This method verifies if the username and password entered are correct.
         public bool verify(string username, string password)
         {
             string[,] info = new string[25, 6];
             csvSplit split = new csvSplit();
             info = split.split();
+            //If nothing is entered, verification fails.
             if (username == null || password == null)
             {
                 return false;
             }
+            //For loop needs to iterate over the array until the username entered is found
             for (int i = 0; i < info.GetLength(0); i++)
             {
                 if (info[i, 0] == username)
                 {
                     if (info[i, 1] == password)
                     {
+                        //If the username and password match, verification passes.
                         user.UserName = username;
                         user.Privellage = info[i, 2];
                         return true;

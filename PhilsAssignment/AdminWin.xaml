@@ -10,6 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
         Title="AdminWin" Height="450" Width="800">
     <Grid>
+        <!--Sets the Row and Column definitions for the screen layout-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -19,40 +20,51 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"></RowDefinition>
             <RowDefinition Height="100*"></RowDefinition>
+            <RowDefinition Height="30*"></RowDefinition>
         </Grid.RowDefinitions>
+        
+        <!--This creates the sidebar-->
         <materialDesign:Card Height="auto" Width="auto" VerticalAlignment="Stretch" HorizontalAlignment="Left"
             Background="{DynamicResource PrimaryHueDarkBrush}"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
-            Padding="8" Grid.RowSpan="2" Grid.Column="0">
+            Padding="8" Grid.RowSpan="3" Grid.Column="0">
+            <!--Stack panel to contain the buttons on the sidebar-->
             <StackPanel Grid.RowSpan="2">
+                <!--Administration Button-->
                 <Button x:Name="_adminPageButton" Click="_adminPageButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Width="100" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left"
                     Height="90"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                    <!--Button contains an AccountGroup icon and the text "Administration Page"-->
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon Kind="AccountGroup" HorizontalAlignment="Center" Height="50" Width="50"/>
                         <TextBlock Text="Administration" FontSize="10" HorizontalAlignment="Center"></TextBlock>
                         <TextBlock Text="Page" FontSize="10" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Button>
+                
+                <!--Projects Button-->
                 <Button x:Name="_projectPageButton" Click="_projectPageButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Width="100" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left"
                     Height="90"
                     Margin="0,5,0,0"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                    <!--Button contains a ProjectorScreen icon and the text "Projects Page"-->
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon Kind="ProjectorScreen" HorizontalAlignment="Center" Height="50" Width="50"/>
                         <TextBlock Text="Projects Page" FontSize="10" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                 </Button>
+                <!--Report Button-->
                 <Button x:Name="_reportPageButton" Click="_reportPageButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                     Width="100" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Left"
                     Height="90"
                     Margin="0,5,0,0"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+                    <!--Button contains a FileDocumentMultiple icon and the text "Report Page"-->
                     <StackPanel Orientation="Vertical">
                         <materialDesign:PackIcon Kind="FileDocumentMultiple" HorizontalAlignment="Center" Height="40" Width="40"/>
                         <TextBlock Text="Report Page" FontSize="10" HorizontalAlignment="Center" Margin="0,5,0,0"></TextBlock>
@@ -61,12 +73,16 @@
                
             </StackPanel>
         </materialDesign:Card>
+        
+        <!--This sets the header, which contains the text "Administration Screen"-->
         <materialDesign:Card Height="50" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Top"
             Background="{DynamicResource PrimaryHueDarkBrush}"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
             Padding="8" Grid.ColumnSpan="3" Grid.Column="1" FontSize="20">
             <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Center" Text="Administration Page" />
         </materialDesign:Card>
+        
+        <!--Change Password Button-->
         <Button x:Name="_changePasswordButton" Click="_changePasswordButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150" 
                     Height="50"
@@ -75,11 +91,14 @@
                     Grid.Column="1"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <!--Button contains the LockReset icon and the text "Change Password"-->
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="LockReset" Height="40" Width="40"/>
                 <TextBlock FontSize="8" Margin="5,15,0,0">Change Password</TextBlock>
             </StackPanel>
         </Button>
+        
+        <!--Create Account Button-->
         <Button x:Name="_createAccountButton" Click="_createAccountButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150"
                     Height="50"
@@ -87,11 +106,14 @@
                     VerticalAlignment="Bottom"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <!--Button contains the AccountPlus icon and the text "Create Account"-->
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="AccountPlus" Height="40" Width="40"/>
                 <TextBlock FontSize="8" Margin="5,15,0,0">Create Account</TextBlock>
             </StackPanel>
         </Button>
+        
+        <!--Delete Account Button-->
         <Button x:Name="_deleteAccountButton" Click="_deleteAccountButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}" 
                     Width="150"
                     Height="50"
@@ -99,39 +121,46 @@
                     VerticalAlignment="Bottom"
                     materialDesign:ButtonAssist.CornerRadius="10"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3">
+            <!--Button contains the AccountRemove icon and the text "Delete Account"-->
             <StackPanel Orientation="Horizontal">
                 <materialDesign:PackIcon Kind="AccountRemove" Height="40" Width="40"/>
                 <TextBlock FontSize="8" Margin="5,15,0,0">Delete Account</TextBlock>
             </StackPanel>
         </Button>
 
-
-        <!--Change Password Entry Boxes-->
+        <!--Below are the stack panels containing the entry fields relevant to the action the user needs to make-->
+        <!--When one of the above three buttons is pressed, the stack panel becomes visible, and hides the other two-->
+        <!--Change Password Stack Panel-->
         <StackPanel x:Name="ChangePasswordStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
              Visibility="Hidden" Grid.Column="2" Grid.Row="1">
+            <!--Old Password Field-->
             <PasswordBox x:Name="_cPOldPasswordInput" 
                 Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Old Password">
             </PasswordBox>
+            <!--New Password Field-->
             <PasswordBox x:Name="_cPNewPasswordInput" 
                 Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter New Password">
             </PasswordBox>
+            <!--Enter Button-->
             <Button x:Name="_cPButton" Click="_cPButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
+                Margin="0,25,0,0"
                 Content="Enter"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3">
             </Button>
         </StackPanel>
 
-        <!--Create Account Entry Boxes-->
+        <!--Create Account Stack Panel-->
         <StackPanel x:Name="CreateAccountStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
              Visibility="Hidden" Grid.Column="2" Grid.Row="1">
+            <!--Firstname Field-->
             <TextBox x:Name="_cAFirstnameInput" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -140,6 +169,7 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Firstname">
             </TextBox>
+            <!--Lastname Field-->
             <TextBox x:Name="_cALastnameInput" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -148,14 +178,17 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Lastname">
             </TextBox>
+            <!--Password Field-->
             <PasswordBox x:Name="_cAPasswordInput" 
                 Style="{StaticResource MaterialDesignFilledPasswordBox}"
                 VerticalAlignment="Top"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter Password">
             </PasswordBox>
+            <!--Enter Button-->
             <Button x:Name="_cAButton" Click="_cAButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
+                Margin="0,25,0,0"
                 Content="Enter"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3">
@@ -165,6 +198,7 @@
         <!--Delete Account Stack Panel-->
         <StackPanel x:Name="DeleteAccountStackPanel" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" 
              Visibility="Hidden" Grid.Column="2" Grid.Row="1">
+            <!--Username Field-->
             <TextBox x:Name="_dAUserNameInput" 
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -173,16 +207,21 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Enter UserName">
             </TextBox>
+            <!--Enter Button-->
             <Button x:Name="_dAButton" Click="_dAButton_Click" Style="{StaticResource MaterialDesignRaisedDarkButton}"
                 Width="75"
+                Margin="0,25,0,0"
                 Content="Enter"
                 materialDesign:ButtonAssist.CornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth3">
             </Button>
         </StackPanel>
+        
+        <!--This produces an error or confirmation message depending on if the action was successful-->
         <TextBlock x:Name="ErrorMessage" HorizontalAlignment="Center" VerticalAlignment="Top" 
                    Style="{StaticResource MaterialDesignBody1TextBlock}"
-                   Text="" Height="29" Margin="0,196,0,0" Width="0">
+                   Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2"
+                   Text="" Height="29" Margin="0,10,0,0" Width="auto">
         </TextBlock>
     </Grid>
 </Window>
