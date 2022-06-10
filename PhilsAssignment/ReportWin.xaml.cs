@@ -23,7 +23,7 @@ namespace PhilsAssignment
         csvSplit data = new csvSplit();
         private string username;
         public string selectedProject;
-        public string[] userInfo = new string[5];
+        public string[] userInfo = new string[6];
         public ReportWin()
         {
             InitializeComponent();
@@ -54,6 +54,7 @@ namespace PhilsAssignment
                     userInfo[2] = temp[i, 2];
                     userInfo[3] = temp[i, 3];
                     userInfo[4] = temp[i, 4];
+                    userInfo[5] = temp[i, 5];   
                     i = temp.GetLength(0);
                 }
             }
@@ -82,17 +83,22 @@ namespace PhilsAssignment
         {
             string[] currentProjects = new string[10];
             string[] hoursBooked = new string[10];
+            string[] taskscompleted = new string[10];
             string split = userInfo[3];
             currentProjects = split.Split(';');
             split = userInfo[4];
             hoursBooked = split.Split(';');
+            split = userInfo[5];
+            taskscompleted = split.Split(';');
             int count = 0;
+
 
             foreach (string element in currentProjects)
             {
                 if (element == selectedProject)
                 {
                     _hoursUsed.Text = hoursBooked[count];
+                    _tasksCompleted.Text = taskscompleted[count];
                 }
                 count++;
             }
@@ -101,8 +107,28 @@ namespace PhilsAssignment
 
         private void _bookingButton_Click(object sender, RoutedEventArgs e)
         {
-            BookingPage load = new BookingPage();
-            Content = load;
+            BookingWin load = new BookingWin();
+           load.Show();
+            Close();
+        }
+
+        private void _adminPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            AdminWin admin = new AdminWin();
+            admin.Show();
+            Close();
+        }
+
+        private void _projectPageButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _reportPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReportAdmin load = new ReportAdmin();
+            load.Show();
+            Close();
         }
     }
 }

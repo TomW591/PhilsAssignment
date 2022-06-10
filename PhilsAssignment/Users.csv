@@ -1,4 +1,4 @@
-﻿UserName,Password,Privillage,ProjectNum,HoursBooked
-User,User2,UserPriv,01;03;04,10;02;01
-ben.falkingham,BFalkPass1,Dev,01;03;04,0;0;0
-tomW,dabPass,Admin,01;02;03;04,0;0;0;0
+﻿UserName,Password,Privillage,ProjectNum,HoursBooked,TasksCompleted
+User,User2,UserPriv,01;03;04,10;02;01,0;0;2
+ben.falkingham,BFalkPass1,Dev,01;03;04,0;0;0;01,0;0;0
+tomW,dabPass,Admin,01;02;03;04,1;0;5;2,0;0;0;0

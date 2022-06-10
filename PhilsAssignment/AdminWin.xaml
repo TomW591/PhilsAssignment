@@ -58,6 +58,7 @@
                         <TextBlock Text="Report Page" FontSize="10" HorizontalAlignment="Center" Margin="0,5,0,0"></TextBlock>
                     </StackPanel>
                 </Button>
+               
             </StackPanel>
         </materialDesign:Card>
         <materialDesign:Card Height="50" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Top"

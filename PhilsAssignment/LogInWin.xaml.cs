@@ -68,7 +68,7 @@ namespace PhilsAssignment
 
         public bool verify(string username, string password)
         {
-            string[,] info = new string[25, 5];
+            string[,] info = new string[25, 6];
             csvSplit split = new csvSplit();
             info = split.split();
             if (username == null || password == null)

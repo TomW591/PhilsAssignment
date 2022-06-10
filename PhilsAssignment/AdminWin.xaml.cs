@@ -45,7 +45,7 @@ namespace PhilsAssignment
 
         public string[,] GetData()
         {
-            string[,] info = new string[25, 5];
+            string[,] info = new string[25, 6];
             csvSplit split = new csvSplit();
             info = split.split();
             return info;
@@ -292,15 +292,20 @@ namespace PhilsAssignment
 
         private void _projectPageButton_Click(object sender, RoutedEventArgs e)
         {
+            ReportWin report = new ReportWin();
+            report.Show();
+            Close();
 
         }
 
         private void _reportPageButton_Click(object sender, RoutedEventArgs e)
         {
-            ReportWin report = new ReportWin();
+            ReportAdmin report = new ReportAdmin();
             report.Show();
             Close();
         }
+
+       
     }
 }
 

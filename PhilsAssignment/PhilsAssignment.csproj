@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AdminPage.xaml.cs" />
+    <Compile Remove="BookingPage.xaml.cs" />
     <Compile Remove="LogInPage.xaml.cs" />
     <Compile Remove="Report.xaml.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="AdminPage.xaml" />
+    <Page Remove="BookingPage.xaml" />
     <Page Remove="LogInPage.xaml" />
     <Page Remove="Report.xaml" />
   </ItemGroup>

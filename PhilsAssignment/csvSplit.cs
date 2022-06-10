@@ -13,7 +13,7 @@ namespace PhilsAssignment
         {
             string read;
             StreamReader reader = new StreamReader("users.csv");
-            string[,] info = new string[25,5];
+            string[,] info = new string[25,6];
             int row = 0;
           while(!reader.EndOfStream)
             {
