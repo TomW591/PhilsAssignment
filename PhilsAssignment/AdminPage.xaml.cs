@@ -230,11 +230,13 @@ namespace PhilsAssignment
                     {
                         _createAccountButton.IsEnabled = false;
                         _deleteAccountButton.IsEnabled = false;
+                        _reportPageButton.IsEnabled = false;
                     }
                     else
                     {
                         _createAccountButton.IsEnabled = true;
                         _deleteAccountButton.IsEnabled = true;
+                        _reportPageButton.IsEnabled = true;
                     }
                 }
             }

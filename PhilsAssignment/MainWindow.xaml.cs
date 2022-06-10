@@ -20,15 +20,12 @@ namespace PhilsAssignment
     /// </summary>
     public partial class MainWindow : Window
     {
-        LogInPage start = new LogInPage();
-        AdminPage admin = new AdminPage();
         public MainWindow()
         {
             InitializeComponent();
             LogInWin login = new LogInWin();
             login.Show();
             Close();
-
         }
     }
 }
