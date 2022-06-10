@@ -19,7 +19,7 @@ namespace PhilsAssignment
     /// <summary>
     /// Interaction logic for AdminPage.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class AdminWin : Window
     {
         private string username;
         private string currentUsername;
@@ -28,7 +28,7 @@ namespace PhilsAssignment
         private string firstname;
         private string lastname;
         private string[,] data;
-        public AdminPage()
+        public AdminWin()
         {
             InitializeComponent();
             GetCurrentUser();
@@ -42,7 +42,7 @@ namespace PhilsAssignment
             read.Close();
 
         }
-   
+
         public string[,] GetData()
         {
             string[,] info = new string[25, 5];
@@ -56,9 +56,9 @@ namespace PhilsAssignment
             StreamWriter writer = new StreamWriter("users.csv");
             for (int i = 0; i < data.GetLength(0); i++)
             {
-                if(data[i, 0] != "")
+                if (data[i, 0] != "")
                 {
-                    for(int j = 0; j < data.GetLength(1) - 1; j++) { writer.Write(data[i, j] + ","); }
+                    for (int j = 0; j < data.GetLength(1) - 1; j++) { writer.Write(data[i, j] + ","); }
                     writer.WriteLine(data[i, 4]);
                 }
             }
@@ -90,15 +90,15 @@ namespace PhilsAssignment
         public bool ValidateName(string name)
         {
             bool validLength = false; bool validChars = true; bool validName = false;
-            if(name.Length > 0 && name.Length <= 64) { validLength = true; }
-            foreach(char letter in name) { validChars = validChars && (Char.IsUpper(letter) || Char.IsLower(letter)); }
-            if (!validLength) 
-            { 
+            if (name.Length > 0 && name.Length <= 64) { validLength = true; }
+            foreach (char letter in name) { validChars = validChars && (Char.IsUpper(letter) || Char.IsLower(letter)); }
+            if (!validLength)
+            {
                 ErrorMessage.Text = "Error - Names must be between 1 and 64 characters in length. ";
                 ErrorMessage.Foreground = Brushes.Red;
 
             }
-            else if (!validChars) 
+            else if (!validChars)
             {
                 ErrorMessage.Text = "Error - Names must only contain alphabetic characters.";
                 ErrorMessage.Foreground = Brushes.Red;
@@ -106,33 +106,33 @@ namespace PhilsAssignment
             else { validName = true; }
             return validName;
         }
-        
+
         public bool ValidatePassword(string newPassword)
         {
             bool validLength = false; bool validUpper = false; bool validLower = false; bool validDigit = false; bool validPassword = false;
-            if(newPassword.Length >= 8 && newPassword.Length <= 64) { validLength = true; }
+            if (newPassword.Length >= 8 && newPassword.Length <= 64) { validLength = true; }
             foreach (char letter in newPassword)
             {
                 validUpper = validUpper || Char.IsUpper(letter);
                 validLower = validLower || Char.IsLower(letter);
                 validDigit = validDigit || Char.IsDigit(letter);
             }
-            if (!validLength) 
-            { 
+            if (!validLength)
+            {
                 ErrorMessage.Text = "Error - Passwords must be between 8 and 64 characters in length.";
                 ErrorMessage.Foreground = Brushes.Red;
             }
-            else if (!validUpper) 
-            { 
+            else if (!validUpper)
+            {
                 ErrorMessage.Text = "Error - Passwords must contain a uppercase character.";
                 ErrorMessage.Foreground = Brushes.Red;
             }
-            else if (!validLower) 
-            { 
+            else if (!validLower)
+            {
                 ErrorMessage.Text = "Error - Passwords must contain a lowercase character.";
                 ErrorMessage.Foreground = Brushes.Red;
             }
-            else if (!validDigit) 
+            else if (!validDigit)
             {
                 ErrorMessage.Text = "Error - Passwords must contain a number.";
                 ErrorMessage.Foreground = Brushes.Red;
@@ -151,7 +151,7 @@ namespace PhilsAssignment
                     if (data[i, 1] == password)
                     {
                         if (ValidatePassword(newPassword))
-                        { 
+                        {
                             data[i, 1] = newPassword;
                             ErrorMessage.Text = "Password changed successfully.";
                             ErrorMessage.Foreground = Brushes.Green;
@@ -184,24 +184,24 @@ namespace PhilsAssignment
                     else { temp = username + Convert.ToString(n); }
                     for (int i = 0; i < data.GetLength(0); i++)
                     {
-                        if(data[i, 0] == temp) 
-                        { 
-                            exists = true; 
+                        if (data[i, 0] == temp)
+                        {
+                            exists = true;
                         }
                     }
                     n++;
-                    
+
                 }
 
                 string projects = data[1, 3];
-                
+
                 int projectsNum = data[1, 3].Split(";").Length;
                 string hours;
                 hours = String.Concat(Enumerable.Repeat("0;", projectsNum - 1)) + "0";
 
                 for (int i = 0; i < data.GetLength(0); i++)
                 {
-                    if(data[i, 0] == null)
+                    if (data[i, 0] == null)
                     {
                         data[i, 0] = temp;
                         data[i, 1] = password;
@@ -226,7 +226,7 @@ namespace PhilsAssignment
             {
                 if (data[i, 0] == currentUsername)
                 {
-                    if(data[i, 2] == "Dev")
+                    if (data[i, 2] == "Dev")
                     {
                         _createAccountButton.IsEnabled = false;
                         _deleteAccountButton.IsEnabled = false;
@@ -287,17 +287,18 @@ namespace PhilsAssignment
 
         private void _adminPageButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void _projectPageButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void _reportPageButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
+
