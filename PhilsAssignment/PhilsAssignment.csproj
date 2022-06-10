@@ -8,6 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="LogInPage.xaml.cs" />
+    <Compile Remove="Report.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="LogInPage.xaml" />
+    <Page Remove="Report.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MaterialDesignColors" Version="2.0.6" />
     <PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
   </ItemGroup>

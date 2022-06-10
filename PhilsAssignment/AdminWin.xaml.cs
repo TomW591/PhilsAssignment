@@ -299,7 +299,9 @@ namespace PhilsAssignment
 
         private void _reportPageButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ReportWin report = new ReportWin();
+            report.Show();
+            Close();
         }
     }
 }

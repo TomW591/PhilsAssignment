@@ -23,12 +23,12 @@ namespace PhilsAssignment
     {
         private string password;
        private string username;
-       public currentUser user = new currentUser();
         public LogInPage()
         {
             InitializeComponent();
             
         }
+        currentUser user = new currentUser();
 
         public void SetCurrentUser()
         {
@@ -48,10 +48,6 @@ namespace PhilsAssignment
             
         }
 
-        public (string,string) setVals()
-        {
-            return (user.UserName, user.Privellage);
-        }
 
         private void _userNameInput_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -63,11 +59,12 @@ namespace PhilsAssignment
 
         }
 
-        public bool verify(string username, string password)
+        public  bool verify(string username, string password)
         {
             string[,] info = new string[25,5];
             csvSplit split = new csvSplit();
             info = split.split();
+         
             if(username == null || password == null)
             {
                 return false;
@@ -78,7 +75,7 @@ namespace PhilsAssignment
                 {
                     if (info[i, 1] == password)
                     {
-                        user.UserName = username;
+                       user.UserName = username;
                         user.Privellage = info[i, 2];
                         return true;
                     }

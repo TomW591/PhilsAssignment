@@ -10,18 +10,7 @@
       Title="LogInPage">
 
     <Grid Margin="0,-2,0,2">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
-       
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="2*" ></RowDefinition>
-            <RowDefinition Height="auto" ></RowDefinition>
-            <RowDefinition Height="auto" ></RowDefinition>
-        </Grid.RowDefinitions>-->
+
         <StackPanel >
 
             <TextBlock Text="Log In Page" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="White"></TextBlock>
