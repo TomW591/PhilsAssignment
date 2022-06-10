@@ -10,25 +10,17 @@
       d:DesignHeight="450" d:DesignWidth="800"
         Title="LogInWin" Height="450" Width="800">
     <Grid Margin="0,-2,0,2">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
-       
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="2*" ></RowDefinition>
-            <RowDefinition Height="auto" ></RowDefinition>
-            <RowDefinition Height="auto" ></RowDefinition>
-        </Grid.RowDefinitions>-->
-        <StackPanel >
-
-            <TextBlock Text="Log In Page" Style="{StaticResource MaterialDesignBody1TextBlock}" Foreground="White"></TextBlock>
-            <materialDesign:PackIcon Kind="Login" materialDesign:ColorZoneAssist.Foreground="White"/>
-        </StackPanel>
+        <!--Creates a header with the text "Login Page"-->
+        <materialDesign:Card Height="50" Width="auto" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+            Background="{DynamicResource PrimaryHueDarkBrush}"
+            Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+            Padding="8" FontSize="20">
+            <TextBlock TextWrapping="Wrap" Margin="10,0,0,0" VerticalAlignment="Center" Text="Login Page" />
+        </materialDesign:Card>
+        <!--Stack Panel containing login fields and enter button-->
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" >
-            <TextBox x:Name="_userNameInput" TextChanged="_userNameInput_TextChanged"
+            <!--Username Field-->
+            <TextBox x:Name="_userNameInput"
              Style="{StaticResource MaterialDesignFilledTextBox}"
              VerticalAlignment="Top"
              AcceptsReturn="True"
@@ -37,13 +29,17 @@
              materialDesign:HintAssist.Hint="Enter UserName">
 
             </TextBox>
+            <!--Password Field-->
             <PasswordBox x:Name="_passwordBox" PasswordChanged="_passwordBox_PasswordChanged"  Height="50" Width="200" VerticalAlignment="Bottom"
   Style="{StaticResource MaterialDesignFilledPasswordBox}"
   materialDesign:HintAssist.Hint="Password"/>
+            <!--Enter Button-->
             <Button Margin="25" x:Name="_logInButton" Click="_logInButton_Click" Style="{StaticResource MaterialDesignRaisedButton}"
         Width="75"
         Content="Enter"
         ></Button>
+            <!--Error or Confirmation Message-->
+            <TextBlock Margin="25" x:Name="_errorMessage" Foreground="Green" Width="auto">""</TextBlock>
         </StackPanel>
     </Grid>
 </Window>
