@@ -11,49 +11,49 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PhilsAssignment
 {
     /// <summary>
-    /// Interaction logic for Report.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Report : Page
+    public partial class ReportWin : Window
     {
         csvSplit data = new csvSplit();
         private string username;
         public string selectedProject;
         public string[] userInfo = new string[5];
-        public Report()
+        public ReportWin()
         {
             InitializeComponent();
             setcurrentUser();
-            //stufffff();
+            stufffff();
         }
+    
 
         private void setcurrentUser()
         {
-            StreamWriter writer = new StreamWriter("currentUser.txt");
-            writer.Write(username);
-            writer.Close();
+            StreamReader read = new StreamReader("currentUser.txt");
+            username = read.ReadLine();
+            read.Close();
         }
 
         public void stufffff()
         {
-           
+
             string[,] temp = new string[25, 5];
-            
+
             temp = data.split();
-            for(int i = 0; i < temp.GetLength(0); i++)
+            for (int i = 0; i < temp.GetLength(0); i++)
             {
-                if(username == temp[i,0])
+                if (username == temp[i, 0])
                 {
-                  userInfo[0] = temp[i,0];
-                    userInfo[1] = temp[i,1];
-                    userInfo[2] = temp[i,2];
-                    userInfo[3] = temp[i,3];
-                    userInfo[4] = temp[i,4];
+                    userInfo[0] = temp[i, 0];
+                    userInfo[1] = temp[i, 1];
+                    userInfo[2] = temp[i, 2];
+                    userInfo[3] = temp[i, 3];
+                    userInfo[4] = temp[i, 4];
                     i = temp.GetLength(0);
                 }
             }
@@ -64,12 +64,12 @@ namespace PhilsAssignment
             currentProjects = split.Split(';');
             split = userInfo[4];
             hoursBooked = split.Split(';');
-            
-            for(int i = 0; i < currentProjects.Length; i++)
+
+            for (int i = 0; i < currentProjects.Length; i++)
             {
                 searchBox.Items.Add(currentProjects[i]);
             }
- 
+
         }
 
         private void searchBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -87,16 +87,16 @@ namespace PhilsAssignment
             split = userInfo[4];
             hoursBooked = split.Split(';');
             int count = 0;
-          
-            foreach(string element in currentProjects)
+
+            foreach (string element in currentProjects)
             {
                 if (element == selectedProject)
                 {
-                    _hoursUsed.Text =  hoursBooked[count];
+                    _hoursUsed.Text = hoursBooked[count];
                 }
                 count++;
             }
-           
+
         }
 
         private void _bookingButton_Click(object sender, RoutedEventArgs e)
@@ -104,6 +104,5 @@ namespace PhilsAssignment
             BookingPage load = new BookingPage();
             Content = load;
         }
-
     }
 }
