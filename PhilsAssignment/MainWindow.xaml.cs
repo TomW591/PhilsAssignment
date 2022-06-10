@@ -22,11 +22,12 @@ namespace PhilsAssignment
     {
         LogInPage start = new LogInPage();
         AdminPage admin = new AdminPage();
-        Report report = new Report();
         public MainWindow()
         {
             InitializeComponent();
-            Content = admin;
+            LogInWin login = new LogInWin();
+            login.Show();
+            Close();
 
         }
     }

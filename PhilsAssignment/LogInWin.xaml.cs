@@ -18,16 +18,16 @@ namespace PhilsAssignment
     /// <summary>
     /// Interaction logic for LogInPage.xaml
     /// </summary>
-  
-    public partial class LogInPage : Page
+
+    public partial class LogInWin : Window
     {
         private string password;
-       private string username;
-       public currentUser user = new currentUser();
-        public LogInPage()
+        private string username;
+        public currentUser user = new currentUser();
+        public LogInWin()
         {
             InitializeComponent();
-            
+
         }
 
         public void SetCurrentUser()
@@ -39,16 +39,19 @@ namespace PhilsAssignment
 
         private void _logInButton_Click(object sender, RoutedEventArgs e)
         {
-           username = _userNameInput.Text;
+            username = _userNameInput.Text;
             password = _passwordBox.Password;
-            if(verify(username, password))
+            if (verify(username, password))
             {
                 SetCurrentUser();
+                AdminWin admin = new AdminWin();
+                admin.Show();
+                Close();
             }
-            
+
         }
 
-        public (string,string) setVals()
+        public (string, string) setVals()
         {
             return (user.UserName, user.Privellage);
         }
@@ -65,16 +68,16 @@ namespace PhilsAssignment
 
         public bool verify(string username, string password)
         {
-            string[,] info = new string[25,5];
+            string[,] info = new string[25, 5];
             csvSplit split = new csvSplit();
             info = split.split();
-            if(username == null || password == null)
+            if (username == null || password == null)
             {
                 return false;
             }
-            for(int i = 0; i < info.GetLength(0); i++)
+            for (int i = 0; i < info.GetLength(0); i++)
             {
-                if (info[i,0] == username)
+                if (info[i, 0] == username)
                 {
                     if (info[i, 1] == password)
                     {
@@ -82,11 +85,11 @@ namespace PhilsAssignment
                         user.Privellage = info[i, 2];
                         return true;
                     }
-                    return false;
+                    
                 }
                 
             }
-            return true;
+            return false;
         }
     }
 }
